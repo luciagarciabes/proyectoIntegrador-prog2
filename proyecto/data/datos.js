@@ -1,5 +1,5 @@
 const datos= {
-    usuario: {
+    usuarios: {
     },
     productos: [{nombre: "nombre Camistea" , precio:"$$$" },
                 {nombre: "nombre Camistea",precio:"$$$" },
