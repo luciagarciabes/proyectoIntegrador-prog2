@@ -1,4 +1,4 @@
-const informacion= {
+const datos= {
     usuario: {
     },
     productos: [{nombre: "nombre Camistea" , precio:"$$$" },
@@ -28,4 +28,4 @@ const informacion= {
 
 
 
-module.exports= informacion
+module.exports= datos
