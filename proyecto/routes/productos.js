@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const productosControlador= require("../controllers/productosController")
 
 const datos= require("../data/datos")
 

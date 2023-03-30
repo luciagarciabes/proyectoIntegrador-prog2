@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
+const indexControlador = require("../controllers/indexController")
+
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render("index");
-});
+router.get('/', indexControlador.index);
 
 
 //ruta de index
@@ -14,18 +14,12 @@ router.get('/', function(req, res, next) {
 //})
 
 //ruta de login
-router.get('/login', function(req,res){
-  return res.render("login")
-})
+router.get('/login', indexControlador.login)
 
 //ruta de registración
-router.get('/register', function(req,res){
-  return res.render("register")
-})
+router.get('/register', indexControlador.register)
 
 //ruta de header logueado
-router.get("/headerLogueado", function(req,res){
-  return res.render("headerLogueado")
-})
+router.get("/headerLogueado", indexControlador.headerLogueado)
 
 module.exports = router;
