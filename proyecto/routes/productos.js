@@ -4,7 +4,7 @@ var router = express.Router();
 const datos= require("../data/datos")
 
 // ruta de lista de productos
-router.get("/lista",  function(req, res) {
+router.get("/producto",  function(req, res) {
     return res.render("product")
     
 })
