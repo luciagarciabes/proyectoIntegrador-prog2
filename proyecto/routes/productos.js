@@ -5,19 +5,19 @@ const datos= require("../data/datos")
 
 // ruta de lista de productos
 router.get("/lista",  function(req, res) {
-    return res.render()
+    return res.render("product")
     
 })
 
 
 //ruta de detalle de producto o search result
 router.get("/detalle/id/:id", function(req,res){
-    return res.render()
+    return res.render("search-results")
 })
 
 //ruta de product add (solo tiene que renderizar una vista)
 router.get('/agegarProducto', function(req,res){
-    
+    return res.render("product-add")
 })
 
 

@@ -8,12 +8,12 @@ router.get('/', function(req, res, next) {
 
 //ruta de perfil
 router.get("/profile", function(req, res){
-  return res.render()
+  return res.render("profile")
 })
 
 //ruta de editar perfil
 router.get("/editarPerfil", function(req,res){
-  return res.render()
+  return res.render("profile-edit")
 })
 
 module.exports = router;
