@@ -5,19 +5,19 @@ const productosControlador= require("../controllers/productosController")
 const datos= require("../data/datos")
 
 // ruta de lista de productos
-router.get("/producto",  function(req, res) {
+router.get("/detalleProducto",  function(req, res) {
     return res.render("product")
     
 })
 
 
 //ruta de detalle de producto o search result
-router.get("/detalle/id/:id", function(req,res){
+router.get("/searchResult", function(req,res){       // hay que poner uno solo? o poner una ruta parametrica
     return res.render("search-results")
 })
 
 //ruta de product add (solo tiene que renderizar una vista)
-router.get('/agegarProducto', function(req,res){
+router.get('/agregarProducto', function(req,res){
     return res.render("product-add")
 })
 
