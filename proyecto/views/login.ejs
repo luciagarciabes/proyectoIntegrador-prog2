@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="/stylesheets/css/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/css/app.css">
+	<link rel="stylesheet" href="/stylesheets/css/formularios.css">
 </head>
 
 <body>
@@ -85,12 +86,22 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de login. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
+			
+			<form class="formRegister" action="/" method="GET">
+			  
+				<label class="label"  for="Usuario"> Usuario:</label>
+				<input  class="input" type="text" id="usuario" name="usuario"><br>
+			  
+				<label class="label" for="Contrasena">Contraseña:</label>
+				<input class="input"  type="password" id="contraseña" name="contraseña"><br>
+
+				<label class="label"  for="Recordarme">Recordarme: </label>
+				<input class="input" type="checkbox" id="recordarme" name="recordarme">
+
+	
+				<input class="submit" type="submit" value="Enviar">
+			  </form>
+
 
 
 	<!-- footer -->

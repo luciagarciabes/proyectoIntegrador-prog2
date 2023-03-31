@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="/stylesheets/css/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/css/app.css">
+	<link rel="stylesheet" href="/stylesheets/css/formularios.css">
 </head>
 
 <body>
@@ -85,12 +86,23 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario para agregar prodcutos al catálogo. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos. <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
+			
+
+			<form class="formRegister" action="/users/profile" method="GET">
+				<label class="label" for="Imagen">Imagen:</label>
+				<input class="input" type="file" id="imagen" name="imagen"><br>
+			  
+				<label class="label"  for="Nombre del producto"> Nombre del producto:</label>
+				<input  class="input" type="text" id="nombreProducto" name="nombreProducto"><br>
+			  
+				<label class="label"  for="Descripción">Descripción:</label>
+				<input class="input"  type="text" id="descripcion" name="descripcion"><br>
+			  
+				<label class="label"  for="Fecha de carga">Fecha de carga:</label>
+				<input  class="input" type="date" id="fecha" name="fecha"><br>
+			  
+				<input class="submit" type="submit" value="Enviar">
+			  </form>
 
 
 	<!-- footer -->
