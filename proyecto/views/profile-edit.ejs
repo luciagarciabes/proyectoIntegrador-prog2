@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="/stylesheets/css/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/css/app.css">
+	<link rel="stylesheet" href="/stylesheets/css/formularios.css">
 </head>
 
 <body>
@@ -85,12 +86,28 @@
 				<h2 class="products-title">Editar mi perfil</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de edición de datos del perfil de usuario. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos deñ usuario<br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
+			
+			<form class="formRegister" action="/users/profile" method="GET">
+				<label class="label"  for="email">Email:</label>
+				<input class="input" type="email" id="email" name="email" value= <%=usuario.email %>> <br> 
+			  
+				<label class="label" for="usuario"> Usuario:</label>
+				<input  class="input" type="text" id="usuario" name="usuario" value=<%= usuario.usuario %>  ><br>
+			  
+				<label class="label"  for="Contraena">Contraseña:</label>
+				<input class="input"  type="password" id="contraseña" name="contraseña" value= <%=usuario.contraseña  %>><br>
+			  
+				<label class="label"  for="Fecha de nacimiento">Fecha de Nacimiento:</label>
+				<input  class="input" type="date" id="fecha_nacimiento" name="fecha_nacimiento" value= <%=usuario.nacimiento  %>><br>
+			  
+				<label class="label"  for="Nro de documento">Nro de Documento:</label>
+				<input  class="input" type="text" id="nro_documento" name="nro_documento" value=<%= usuario.documento %> ><br>
+			  
+				<label class="label"  for="Foto de perfil">Foto de Perfil:</label>
+				<input  class="input" type="text" id="foto_perfil" name="foto_perfil"  value=<%=usuario.foto %>><br>
+			  
+				<input class="submit" type="submit" value="Actualizar información">
+			  </form>
 
 
 	<!-- footer -->

@@ -1,9 +1,11 @@
+const datos= require("../data/datos")
+
 const usersControlador= {
    profile: function(req, res){
-    return res.render("profile")
+    return res.render("profile" ,{usuario: datos.usuario})
   },
   editarPerfil: function(req,res){
-    return res.render("profile-edit")
+    return res.render("profile-edit", {usuario: datos.usuario})
   }
 
 }
