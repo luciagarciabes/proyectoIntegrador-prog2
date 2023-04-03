@@ -1,6 +1,7 @@
+const datos= require("../data/datos")
 const indexControlador = {
     index: function(req, res, next) {
-        res.render("index");
+        res.render("index", {productos: datos.productos});
       },
     login:  function(req,res){
         return res.render("login")

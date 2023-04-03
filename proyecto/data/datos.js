@@ -5,14 +5,14 @@ const datos = {
         contraseña: 'claudita2023',
         nacimiento: '31/03/1956',
         documento: '10498320',
-        foto: ''        
+        foto: ""       
     },
     productos: [
     {
         nombre: "Chocotorta",
         descripción: "La chocotorta se elabora con galletas de chocolate, crema de queso, dulce de leche y café.",
         precio: 5000.00,
-        imagen: "imagen1.jpg",
+        imagen: "/images/products/chocotorta.jpg",
         fechaDeCarga: '31/03/23'
     },
     {
