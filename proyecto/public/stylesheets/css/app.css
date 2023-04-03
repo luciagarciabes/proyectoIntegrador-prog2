@@ -29,7 +29,7 @@ body {
 body {
   font-family: var(--base-font-family);
   font-weight: 300;
-  background-color: var(--light-gray);
+  background-color:#ffeddc;
 }
 
 ul,
@@ -68,7 +68,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color:#FBCDCF;
+  background-color:#e7c8c9;
 }
 
 .main-header_home-link,
@@ -180,6 +180,7 @@ hr {
   overflow: hidden;
   transition: 300ms;
   margin: 20px 0;
+  font-family: 'Comfortaa', cursive;
 }
 
 .product-box a {
@@ -259,7 +260,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color: white;
   padding: 20px 0;
   margin-top: 80px;
 }
