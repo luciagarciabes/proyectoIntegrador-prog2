@@ -77,6 +77,20 @@ const datos = {
         precio: 7500.00,
         imagen: "imagen1.jpg",
         fechaDeCarga: '31/03/23'
+    },
+    {
+        nombre: "Selva Negra",
+        descripción: "La selva negra es un postre popular hecho con bizcocho de chocolate, crema batida, cerezas y licor de cereza.",
+        precio: 8500.00,
+        imagen: "imagen1.jpg",
+        fechaDeCarga: '31/03/23'
+    },
+    {
+        nombre: "Lemon Pie",
+        descripción: "El Lemon Pie es un postre que consta de una base de masa quebrada y un relleno cremoso y ácido de limón. Los ingredientes típicos para hacer el relleno son limones frescos, leche condensada, huevos y azucar.",
+        precio: 6000.00,
+        imagen: "imagen1.jpg",
+        fechaDeCarga: '31/03/23'
     }
     ],
     comentarios: [
