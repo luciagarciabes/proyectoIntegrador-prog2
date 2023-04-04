@@ -5,7 +5,7 @@ const datos = {
         contraseña: 'claudita2023',
         nacimiento: '31/03/1956',
         documento: '10498320',
-        foto: ""       
+        foto: "/images/claudiafoto.webp"       
     },
     productos: [
     {

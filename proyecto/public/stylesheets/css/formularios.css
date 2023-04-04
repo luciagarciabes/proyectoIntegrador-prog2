@@ -1,6 +1,6 @@
 /* Estilo para el formulario */
 .formRegister {
-    background-color: #f2f2ff;
+    background-color: #faf2f8;
     padding: 20px;
     font-family: Arial, sans-serif;
     margin: 0 auto;
@@ -26,7 +26,7 @@
   
   /* Estilo para el botón de enviar */
   .submit {
-    background-color: #ab70d8;
+    background-color: #b968a6;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -38,17 +38,13 @@
   
   /* Estilo para el botón de enviar al pasar el cursor */
   .submit:hover {
-    background-color: #bf68db;
+    background-color: #c492d4;
   }
 
   #recordarme.input{
     text-align: left;
   }
   
-  /* Estilo para los mensajes de error */
-  .error {
-    color: red;
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
+  
+  
   
