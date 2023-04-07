@@ -29,7 +29,12 @@ body {
 body {
   font-family: var(--base-font-family);
   font-weight: 300;
-  background-color:#ffeddc;
+  background-color:#fff6f8;
+}
+
+.separador-footer{
+  height: 100px;
+  background: #e7c8c9;
 }
 
 ul,

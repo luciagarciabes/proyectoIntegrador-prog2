@@ -40,56 +40,56 @@ const datos = {
         nombre: "Torta Oreo",
         descripción: "La torta Oreo es un postre delicioso elaborado con ingredientes simples como galletas Oreo, queso crema, azúcar y crema batida.",
         precio: 8000.00,
-        imagen: "oreo.jpg",
+        imagen: "/images/products/oreo.jpg",
         fechaDeCarga: '31/03/23'
     },
     {
         nombre: "Pasta frola de membrillo",
         descripción: "La pasta frola de membrillo se elabora con ingredientes simples como harina, mantequilla, azúcar, huevos y dulce de membrillo.",
         precio: 5000.00,
-        imagen: "pastafrola.jpg",
+        imagen: "/images/products/pastafrola.jpg",
         fechaDeCarga: '31/03/23'
     },
     {
         nombre: "Torta de ricota",
         descripción: "La torta de ricota es un postre italiano elaborado con queso ricota, huevos, azúcar, harina y esencia de vainilla.",
         precio: 6500.00,
-        imagen: "ricota.jpg",
+        imagen: "/images/products/ricota.jpg",
         fechaDeCarga: '31/03/23'
     },
     {
         nombre: "Marquise",
         descripción: "La marquise es un postre de origen francés elaborado con chocolate, mantequilla, huevos y azúcar.",
         precio: 7000.00,
-        imagen: "marquise.jpg",
+        imagen: "/images/products/marquise.jpg",
         fechaDeCarga: '31/03/23'
     },
     {
         nombre: "Tiramisú",
         descripción: "El tiramisú es un postre italiano que se elabora con ingredientes simples como queso mascarpone, bizcochos de soletilla, café, huevos y cacao en polvo.",
         precio: 8500.00,
-        imagen: "tiramisu.jpg",
+        imagen: "/images/products/tiramisu.jpg",
         fechaDeCarga: '31/03/23'
     },
     {
         nombre: "Torta de chocolate",
         descripción: "La torta de chocolate es un postre clásico que se elabora con ingredientes simples como harina, azúcar, huevos, mantequilla, chocolate y cacao en polvo.",
         precio: 7500.00,
-        imagen: "tortachocolate.jpg",
+        imagen: "/images/products/tortachocolate.jpg",
         fechaDeCarga: '31/03/23'
     },
     {
         nombre: "Selva Negra",
         descripción: "La selva negra es un postre popular hecho con bizcocho de chocolate, crema batida, cerezas y licor de cereza.",
         precio: 8500.00,
-        imagen: "selva negra.jpg",
+        imagen: "/images/products/selva negra.jpg",
         fechaDeCarga: '31/03/23'
     },
     {
         nombre: "Lemon Pie",
         descripción: "El Lemon Pie es un postre que consta de una base de masa quebrada y un relleno cremoso y ácido de limón. Los ingredientes típicos para hacer el relleno son limones frescos, leche condensada, huevos y azucar.",
         precio: 6000.00,
-        imagen: "lemon pie.jpg",
+        imagen: "/images/products/lemon pie.jpg",
         fechaDeCarga: '31/03/23'
     }
     ],
