@@ -6,7 +6,7 @@
 :root {
   --yellow: #EAC926;
   --dark-blue: #03264C;
-  --light-blue: #1259c3;
+  --light-blue: #4777bf;
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #39b54a;
@@ -505,7 +505,7 @@ textarea.form-input {
 }
 
 .btn{
-  background-color: #1259c3;
+  background-color: #cf98ab;
   padding: 10px 20px;
   border-radius: 4px;
   color: #fff;
