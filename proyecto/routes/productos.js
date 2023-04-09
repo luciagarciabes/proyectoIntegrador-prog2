@@ -9,7 +9,8 @@ router.get("/detalleProducto", productosControlador.detalleProducto)
 
 
 //ruta de  search result
-router.get("/searchResult", productosControlador.searchResult)   // hay que poner uno solo? o poner una ruta parametrica
+router.get("/searchResult", productosControlador.searchResult)   
+
 
 //ruta de product add (solo tiene que renderizar una vista)
 router.get('/agregarProducto', productosControlador.agregarProducto )
