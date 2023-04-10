@@ -3,23 +3,23 @@ USE baseDeDatos;
 
 CREATE TABLE tabla_de_usuarios (
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-	email VARCHAR(100) UNIQUE NOT NULL,
-    usuario VARCHAR(100) UNIQUE NOT NULL,
-    contraseña VARCHAR(250) NOT NULL,
-    fecha_nacimiento DATE NOT NULL,
-    documento INT NOT NULL,
-    foto_perfil VARCHAR(100) NOT NULL,
-    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    deletedAt TIMESTAMP NULL
-    );
+	email VARCHAR(200) UNIQUE NOT NULL,
+  usuario VARCHAR(200) UNIQUE NOT NULL,
+  contraseña VARCHAR(250) NOT NULL,
+  fecha_nacimiento DATE NOT NULL,
+  documento INT NOT NULL,
+  foto_perfil VARCHAR(300) NOT NULL,
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  deletedAt TIMESTAMP NULL
+  );
     
 CREATE TABLE tabla_productos (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   usuario_id INT UNSIGNED NOT NULL,
-  imagen VARCHAR(100) NOT NULL,
+  imagen VARCHAR(300) NOT NULL,
   nombre_producto VARCHAR(250) NOT NULL,
-  descripcion_producto VARCHAR(500) NOT NULL, 
+  descripcion_producto VARCHAR(1000) NOT NULL, 
   fecha_carga DATETIME NOT NULL,
   FOREIGN KEY (usuario_id) REFERENCES tabla_de_usuarios(id),
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -29,12 +29,12 @@ CREATE TABLE tabla_productos (
 
 CREATE TABLE comentarios (
 	id INT UNSIGNED KEY AUTO_INCREMENT,
-    post_id INT UNSIGNED NOT NULL,
-    usuario_id INT UNSIGNED NOT NULL,
-    comentario VARCHAR(200) NOT NULL,
-    FOREIGN KEY (usuario_id) REFERENCES tabla_de_usuarios(id),
-    FOREIGN KEY (post_id) REFERENCES tabla_productos(id),
-    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  post_id INT UNSIGNED NOT NULL,
+  usuario_id INT UNSIGNED NOT NULL,
+  comentario VARCHAR(2000) NOT NULL,
+  FOREIGN KEY (usuario_id) REFERENCES tabla_de_usuarios(id),
+  FOREIGN KEY (post_id) REFERENCES tabla_productos(id),
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	deletedAt TIMESTAMP NULL
 	);
