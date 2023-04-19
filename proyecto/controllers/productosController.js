@@ -1,7 +1,7 @@
 const datos= require("../data/datos")
 
 const productosControlador= {
-    detalleProducto: function(req, res) {
+    detalleProducto: function(req, res) { 
         return res.render("product", {datos})  
     },
     searchResult: function(req,res){       
