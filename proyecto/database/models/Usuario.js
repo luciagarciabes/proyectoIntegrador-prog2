@@ -6,6 +6,20 @@ module.exports= function(sequelize, dataTypes) {
         timestamps: false, 
         underscored: true,
     }
-    let Producto= sequelize.define(alias, cols, config)
-    return Producto
+    let Usuario= sequelize.define(alias, cols, config)
+    // relacion
+    Usuario.associate= function(models){
+        Usuario.hasMany(models.Comentrio, {
+            as: "comentario", 
+            foreignKey: "usuario_id"
+        }),
+        Usuario.belongsToMany(models.Producto, {
+            as:"productos",
+            through:"comentarios",
+            foreignKey: "usuario_id",
+            otherKey: "post_id",
+            timestamps: false
+        })
+    } 
+    return Usuario
 } 
