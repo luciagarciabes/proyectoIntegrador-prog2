@@ -11,7 +11,7 @@ module.exports= function(sequelize, dataTypes) {
     // Un usuario tiene muchos productos
    
     Usuario.associate= function(models){
-     Usuario.hasMany(models.Productos, {
+     Usuario.hasMany(models.Producto, {
         as: "Productos",
         foreignKey: "usuario_id"
      }) 
