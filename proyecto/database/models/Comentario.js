@@ -7,5 +7,13 @@ module.exports= function(sequelize, dataTypes) {
         underscored: true,
     }
     let Comentario= sequelize.define(alias, cols, config)
+
+    //relacion
+    Comentario.associate= function(models){
+        Comentario.belongsTo(models.Usuario, {
+            as: "tabla_de_usuarios", 
+            foreignKey: "usuario_id"
+        })
+    }
     return Comentario
 } 
