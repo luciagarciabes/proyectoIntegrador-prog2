@@ -27,13 +27,16 @@ module.exports= function(sequelize, dataTypes) {
             type: dataTypes.VARCHAR(300)
         },
         createdAt: {
-            type: dataTypes.DATE
+            type: dataTypes.DATE,
+            AllowNull: true
         },
         updatedAt: {
-            type: dataTypes.DATE
+            type: dataTypes.DATE,
+            AllowNull: true
         },
         deletedAt: {
-            type: dataTypes.DATE
+            type: dataTypes.DATE,
+            AllowNull: true
         }
      }
     let config= {
