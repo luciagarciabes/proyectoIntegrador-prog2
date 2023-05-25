@@ -1,6 +1,40 @@
 module.exports= function(sequelize, dataTypes) {
     let alias= "Producto"
-    let cols= { }
+    let cols= {
+        id: {
+            autoIncrement: true,
+            primaryKey: true,
+            type: dataTypes.INTEGER
+        },
+        usuario_id: {
+            type: dataTypes.INTEGER,
+            unsigned: true
+        },
+        imagen: {
+            type: dataTypes.VARCHAR(300),
+        },
+        nombre_producto: {
+            type: dataTypes.VARCHAR(250)
+        },
+        descripcion_producto: {
+            type: dataTypes.VARCHAR(1000)
+        },
+        fecha_carga: {
+            type: dataTypes.DATE
+        },
+        foreignKey: {
+            
+        },
+        createdAt: {
+            type: dataTypes.DATE
+        },
+        updatedAt: {
+            type: dataTypes.DATE
+        },
+        deletedAt: {
+            type: dataTypes.DATE
+        }
+     }
     let config= {
         tableName: 'tabla_productos', 
         timestamps: true, 
