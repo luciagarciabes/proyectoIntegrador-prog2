@@ -22,9 +22,6 @@ module.exports= function(sequelize, dataTypes) {
         fecha_carga: {
             type: dataTypes.DATE
         },
-        foreignKey: {
-            
-        },
         createdAt: {
             type: dataTypes.DATE
         },

@@ -17,12 +17,6 @@ module.exports= function(sequelize, dataTypes) {
         comentario: {
             type: dataTypes.VARCHAR(2000)
         },
-        foreignKey: {
-            
-        },
-        foreignKey: {
-            
-        },
         createdAt: {
             type: dataTypes.DATE
         },
