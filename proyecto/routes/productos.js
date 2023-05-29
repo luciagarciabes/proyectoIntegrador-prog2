@@ -5,7 +5,7 @@ const productosControlador= require("../controllers/productosController")
 const datos= require("../data/datos")
 
 // ruta de detqlle de productos
-router.get("/detalleProducto/:id", productosControlador.detalleProducto)
+router.get("/detalleProducto", productosControlador.detalleProducto)
 
 
 //ruta de  search result
