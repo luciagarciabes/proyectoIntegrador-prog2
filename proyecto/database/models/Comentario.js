@@ -15,7 +15,7 @@ module.exports= function(sequelize, dataTypes) {
             unsigned: true
         },
         comentario: {
-            type: dataTypes.VARCHAR(2000)
+            type: dataTypes.STRING
         },
         createdAt: {
             type: dataTypes.DATE,

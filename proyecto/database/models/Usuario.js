@@ -7,15 +7,15 @@ module.exports= function(sequelize, dataTypes) {
             type: dataTypes.INTEGER
         },
         email: {
-            type: dataTypes.VARCHAR(200),
+            type: dataTypes.STRING,
             unique: true
         },
         usuario: {
-            type: dataTypes.VARCHAR(200),
+            type: dataTypes.STRING,
             unique: true
         },
         contrasena: {
-            type: dataTypes.VARCHAR(250)
+            type: dataTypes.STRING
         },
         fecha_nacimiento: {
             type: dataTypes.DATE
@@ -24,7 +24,7 @@ module.exports= function(sequelize, dataTypes) {
             type: dataTypes.INTEGER
         },
         foto_perfil: {
-            type: dataTypes.VARCHAR(300)
+            type: dataTypes.STRING
         },
         createdAt: {
             type: dataTypes.DATE,

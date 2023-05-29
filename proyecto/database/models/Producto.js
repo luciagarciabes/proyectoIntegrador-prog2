@@ -11,13 +11,13 @@ module.exports= function(sequelize, dataTypes) {
             unsigned: true
         },
         imagen: {
-            type: dataTypes.VARCHAR(300),
+            type: dataTypes.STRING,
         },
         nombre_producto: {
-            type: dataTypes.VARCHAR(250)
+            type: dataTypes.STRING
         },
         descripcion_producto: {
-            type: dataTypes.VARCHAR(1000)
+            type: dataTypes.STRING
         },
         fecha_carga: {
             type: dataTypes.DATE
