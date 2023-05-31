@@ -43,21 +43,18 @@ module.exports= function(sequelize, dataTypes) {
     let Producto= sequelize.define(alias, cols, config)
 
     //relaciones
-    // Un producto pertenece a un usuario y un producto tiene muchos comentarios
+    // Un producto pertenece a un usuario 
     Producto.associate= function(models){
         Producto.belongsTo(models.Usuario, {
-            as: "Usuarios", 
+            as: "productoUsuarios", 
             foreignKey: "usuario_id",
         }),
-         Producto.belongsToMany(models.Comentario, {
-            as: "Comentarios",
-            through: "comentarios",
-            foreignKey: "post_id",
-            otherKey: "usuario_id",
-            timestamps: false
+    //Un producto tiene muchos comentarios
+    Producto.hasMany(models.Comentario, {
+        as: "productoComentarios",
+        foreignKey: "post_id",
 
          })
         }
-
     return Producto
 } 

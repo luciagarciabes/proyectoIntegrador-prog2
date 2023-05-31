@@ -38,16 +38,17 @@ module.exports= function(sequelize, dataTypes) {
     let Comentario= sequelize.define(alias, cols, config)
 
     //relacion
-    // Muchos comentarios pertenecen a muchos productos (la pivot es comenatios también). muchos a muchos
+    // Muchos comentarios pertenecen a un producto
     Comentario.associate= function(models){
-        Comentario.belongsToMany(models.Producto, {
-            as: "Productos",
-            through: "comentarios",
-            foreignKey: "usuario_id",
-            otherKey: "post_id",
-            timestamps: false
+        Comentario.belongsTo(models.Producto, {
+            as: "comentarioProductos",
+            foreignKey: "post_id"
         })
-       
+    // Muchos comentarios pertenecen a un usuario
+        Comentario.belongsTo(models.Usuario, {
+            as: "comentarioUsuarios",
+            foreignKey: "usuario_id"
+        })
     }
     return Comentario
 } 

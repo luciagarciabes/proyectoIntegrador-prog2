@@ -525,6 +525,10 @@ textarea.form-input {
   color: #fff;
 }
 
+#productos{
+  width: 100%;
+}
+
 
 /*====== Media-Queries ======*/
 @media (min-width: 768px) {

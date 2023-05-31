@@ -13,14 +13,14 @@
 			<!-- Show the "ultimos" products -->
 			
 
-			<form class="formRegister" action="/login" method="GET">
+			<form class="formRegister" action="/login" method="post">
 				<label class="label"  for="email">Email:</label>
 				<input class="input" type="email" id="email" name="email"><br>
 			  
 				<label class="label" for="usuario"> Usuario:</label>
 				<input  class="input" type="text" id="usuario" name="usuario"><br>
 			  
-				<label class="label"  for="Contraena">Contraseña:</label>
+				<label class="label"  for="Contrasena">Contraseña:</label>
 				<input class="input"  type="password" id="contraseña" name="contraseña"><br>
 			  
 				<label class="label"  for="Fecha de nacimiento">Fecha de Nacimiento:</label>
@@ -35,6 +35,9 @@
 				<input class="submit" type="submit" value="Enviar">
 			  </form>
 
+<% if (local.errors) { %>
+	<p class="error"><%= errors.message %> </p>
+ <% } %> 
 
 	<!-- footer -->
 	<%- include('./partials/footer.ejs') %>
