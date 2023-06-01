@@ -32,7 +32,7 @@ const productosControlador= {
                 order:[[ "createdAt", "DESC"]]
             }) 
             .then(data => {
-                return res.send(data)
+                return res.render( "search-results", {productos:data})
 
             })  
             
