@@ -3,11 +3,12 @@ const db = require('../database/models');
 
 const indexControlador = {
     index: function(req, res, next) {
-      let rel = {include: [{association: "productoUsuarios"}]}
-      db.Producto.findAll(rel,{raw:true,nest:true}, {
+      let rel =  {
+        include: [{association: "productoUsuarios"}],
         order: [
           'fecha_carga', 'DESC'
         ]}
+      db.Producto.findAll(rel
         )
         .then((data) => {
           console.log(data)
@@ -17,6 +18,9 @@ const indexControlador = {
           return res.send(error);
         })
       },
+
+
+
     login:  function(req,res){
         return res.render("login")
       },
