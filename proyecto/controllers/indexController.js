@@ -11,7 +11,7 @@ const indexControlador = {
         )
         .then((data) => {
           console.log(data)
-          res.render("index", {data})
+          res.render("index", {productos: data})
         })
         .catch((error)=>{
           return res.send(error);

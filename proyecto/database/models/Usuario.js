@@ -14,7 +14,7 @@ module.exports= function(sequelize, dataTypes) {
             type: dataTypes.STRING,
             unique: true
         },
-        contrasena: {
+        contraseña: {
             type: dataTypes.STRING
         },
         fecha_nacimiento: {
@@ -42,7 +42,7 @@ module.exports= function(sequelize, dataTypes) {
     let config= {
         tableName: 'tabla_de_usuarios', 
         timestamps: true, 
-        underscored: true,
+       
     }
     let Usuario= sequelize.define(alias, cols, config)
     // relacion
