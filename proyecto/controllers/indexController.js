@@ -3,12 +3,10 @@ const db = require('../database/models');
 
 const indexControlador = {
     index: function(req, res, next) {
-      let rel =  {
+      let rel =  
+      db.Producto.findAll({
         include: [{association: "productoUsuarios"}],
-        order: [
-          'fecha_carga', 'DESC'
-        ]}
-      db.Producto.findAll(rel
+        order: [['createdAt', 'DESC']]}
         )
         .then((data) => {
           console.log(data)
