@@ -8,8 +8,8 @@ const usersControlador= {
     let id= req.params.id
     db.Usuario.findByPk(id, rel, {raw:true, nest:true}, {
       order: [
-        'fecha_carga', 'DESC'
-      ]})
+        'createdAt', 'DESC' ]}
+        )
     .then((data) => {
       console.log(data);
       return res.render("profile", {usuario: data})

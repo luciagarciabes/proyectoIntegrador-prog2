@@ -7,7 +7,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= datos.productos[0].nombre %></h2> 
+			<h2 class="products-title"><%= producto.nombre_producto %></h2> 
 			<p class="product-detail-description">
 				<a href="/productos/agregarProducto">Editar</a> <!-- href cambiar-->
 			</p>
@@ -15,25 +15,28 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src=<%= datos.productos[0].imagen %> alt="" class="product-detail-img">
+					<img src=<%= producto.imagen %> alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%= datos.productos[0].descripción %></p>
+						<%= producto.descripcion_producto %></p >
+						<a href="/users/profile/id/<%=producto.productoUsuarios.id %>"><p class="product-detail-description">Usuario: <%= producto.productoUsuarios.usuario %></p></a>
+
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
 
-					<% for( let i = 0; i < datos.comentarios.length; i++ ) { %>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/users/profile">Nombre usuario: <%= datos.comentarios[i].usuario %> </a> </strong> <!-- href cambiar-->
-								<%= datos.comentarios[i].texto %></p>
-							</div>
-						</article>
-					
-					<% } %>
-					</section>
+						<% for( let i = 0; i < producto.productoComentarios.length; i++ ) { %>
+							<article>
+								<img src="https://via.placeholder.com/35" alt="">
+								<div class="data">
+									<p class="user">
+									<strong> <a href="/users/profile/id/<%= producto.productoComentarios[i].usuario_id %>">Nombre usuario: <%= producto.productoComentarios[i].usuario_id %> </a> </strong> <!-- QUE NO APAREZCA ID SINO USUARIO-->
+									<%= producto.productoComentarios[i].comentario %></p>
+									
+								</div>
+							</article>
+						
+						<% } %>
+						</section>
 					
 
 

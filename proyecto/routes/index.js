@@ -13,5 +13,8 @@ router.get('/login', indexControlador.login)
 //ruta de registración
 router.get('/register', indexControlador.register)
 
+// ruta de crear usuario
+router.post('/register', indexControlador.create)
+
 
 module.exports = router;

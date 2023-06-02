@@ -22,9 +22,13 @@ const indexControlador = {
     login:  function(req,res){
         return res.render("login")
       },
-    register:  function(req,res){
+    register: function(req,res) {
+      return res.render("register")
+    },
+
+    create: function(req,res){
       let errors = {}
-      // validacion mail
+      //Validacion mail
       if (req.body.email == "") {
         errors.message = "Email no puede estar vacio.";
         res.locals.errors = errors;
@@ -55,6 +59,7 @@ const indexControlador = {
       User.create(usuario);
       res.redirect('/')  // chequear a donde tiene que redireccionar   
       }
+     
 }
 
 
