@@ -11,46 +11,36 @@
 				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			
-<!-- estructura traida de products.ejs -->
-			<div class="container products-wrapper">
-				<div class="d-flex align-items-center">
-					<h2 class="products-title"><%= datos.productos[1].nombre %></h2> 
-					<p class="product-detail-description">
-						<a href="/productos/agregarProducto">Editar</a> <!-- href cambiar-->
-					</p>
-				</div>
-				<div class="product-detail">
-					<div class="row">
-						<article class="col-12 col-lg-8 product-detail-info">
-							<img src=<%=datos.productos[1].imagen %> alt=<%=datos.productos[1].nombre %> class="product-detail-img">
-							<p class="product-detail-description">
-								<%= datos.productos[1].descripción %></p>
-						</article>
-						<div class="col-12 col-lg-4">
 
+			<% if (productos.length !=0) { %>
 
-
+				<div class="col-12 col-sm-6 col-lg-3">
+					<% for( let i = 0; i < productos.length; i++ ) { %>
+						<section class="product-box">
+							<a href="/productos/detalleProducto"> 
+								<figure class="product-box_image">
+									<img class="foto-producto" src= <%=productos[i].imagen%> alt=<%= productos[i].nombre_producto %>>
+								</figure>
+								<article class="product-box_data">
+									<h2><%=productos[i].nombre_producto%></h2>
+									<p><%= productos[i].descripcion_producto %></p></a>
+									<a href="/users/profile/id/<%=productos[i].productoUsuarios.id %>"><p>Usuario: <%= productos[i].productoUsuarios.usuario %></p></a>
+									
+								</article>
 							
-							<section class="comments">
-								<% for( let i = 0; i < datos.comentarios.length; i++ ) { %>
-									<article>
-										<img src="https://via.placeholder.com/35" alt="">
-										<div class="data">
-											<p class="user">
-											<strong> <a href="/users/profile">Nombre usuario: <%= datos.comentarios[i].usuario %> </a> </strong> <!-- href cambiar-->
-											<%= datos.comentarios[i].texto %></p>
-										</div>
-									</article>
-								
-								<% } %>
-							</section>
-							<form class="form" action="/productos/detalleProducto" method="GET">
-								<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-								<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-							</form>
-							<hr>
-						</div>
+						</section>
+					<% } %>
+					</div>
+				 <% } else { %>
+
+					<h2 class="products-title"> No hay resultados para tu búsqueda </h2>
+
+						<% } %>
+			 
+
+			
+			
+
 					</div>
 				</div>
 			</div>
