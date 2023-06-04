@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-<%- include('./partials/headerNoLogueado.ejs') %>
+<% if (locals.usuarioLogueado != undefined) { %>
+	<%- include("./partials/headerLogueado.ejs") %>
+<% } else { %>
+	<%- include('./partials/headerNoLogueado.ejs') %>
+<% } %>
 <!-- /Header -->
 
 	<!-- Novedades -->

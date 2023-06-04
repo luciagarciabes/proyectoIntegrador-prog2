@@ -49,6 +49,15 @@ const productosControlador= {
     },
     agregarProducto: function(req,res){
         return res.render("product-add")
+    },
+    crearProducto: function(req, res){
+        db.Producto.create ({
+            usuario_id: session.usuarioLoguado.id,
+            imagen: req.body.imagen,
+            nombre_producto: req.body.nombreProducto,
+            descripcion_producto: req.body.descripcion
+        }
+        )
     }
 }
 

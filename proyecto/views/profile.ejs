@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-<%- include('./partials/headerLogueado.ejs') %>
+<% if (locals.usuarioLogueado != undefined) { %>
+	<%- include("./partials/headerLogueado.ejs") %>
+<% } else { %>
+	<%- include('./partials/headerNoLogueado.ejs') %>
+<% } %>
 	<!-- /Header -->
 
 	<!-- Datos del usuario -->
@@ -42,7 +46,7 @@
 			<% for( let i = 0; i < usuario.usuarioProductos.length; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/productos/detalleProducto"><!-- href cambiar-->
+						<a href="/productos/detalleProducto/<%= usuario.usuarioProductos[i].id %>"><!-- href cambiar-->
 							<figure class="product-box_image">
 								<img  class="foto-producto" src=<%= usuario.usuarioProductos[i].imagen %> alt=<%= usuario.usuarioProductos[i].nombre_producto%>>
 							</figure>

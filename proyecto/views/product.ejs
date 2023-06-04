@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-<%- include('./partials/headerNoLogueado.ejs') %>
+<% if (locals.usuarioLogueado != undefined) { %>
+	<%- include("./partials/headerLogueado.ejs") %>
+<% } else { %>
+	<%- include('./partials/headerNoLogueado.ejs') %>
+<% } %>
 	<!-- /Header -->
 
 	<!-- product detail -->
@@ -22,28 +26,42 @@
 
 				</article>
 				<div class="col-12 col-lg-4">
-					<section class="comments">
+					<section class="comments">		
+							<% if (producto.productoComentarios.length == 0) { %>
+									<p class="product-detail-description"> No hay comentarios para este producto</p>
+							<% } else {%>
+								<% for( let i = 0; i < producto.productoComentarios.length; i++ ) { %>
+									<article>
+										<img src="https://via.placeholder.com/35" alt="">
+										<div class="data">
+											<p class="user">
+											<strong> <a href="/users/profile/id/<%= producto.productoComentarios[i].usuario_id %>">Nombre usuario: <%= producto.productoComentarios[i].usuario_id %> </a> </strong> <!-- QUE NO APAREZCA ID SINO USUARIO-->
+											<%= producto.productoComentarios[i].comentario %></p>
+											
+										</div>
+									</article>
+								
+								<% } %>
+								<% } %>
+							</section>
+				
 
-						<% for( let i = 0; i < producto.productoComentarios.length; i++ ) { %>
-							<article>
-								<img src="https://via.placeholder.com/35" alt="">
-								<div class="data">
-									<p class="user">
-									<strong> <a href="/users/profile/id/<%= producto.productoComentarios[i].usuario_id %>">Nombre usuario: <%= producto.productoComentarios[i].usuario_id %> </a> </strong> <!-- QUE NO APAREZCA ID SINO USUARIO-->
-									<%= producto.productoComentarios[i].comentario %></p>
-									
-								</div>
-							</article>
 						
-						<% } %>
-						</section>
 					
 
-
-					<form class="form" action="/productos/detalleProducto" method="GET">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-					</form>
+					<% if (locals.usuarioLogueado != undefined) { %>
+						<form class="form" action="/login" method="POST">
+							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+						</form>
+					 
+					<% } else { %>
+						<form class="form" action="/login" method="GET">
+							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+						</form>
+						<% } %>
+					
 					<hr>
 				</div>
 			</div>

@@ -15,6 +15,10 @@ router.get("/searchResult", productosControlador.searchResult)
 //ruta de product add (solo tiene que renderizar una vista)
 router.get('/agregarProducto', productosControlador.agregarProducto )
 
+// ruta por post de crear producto
+
+router.post("/agregarProducto", productosControlador.crearProducto)
+
 
 
 module.exports = router;

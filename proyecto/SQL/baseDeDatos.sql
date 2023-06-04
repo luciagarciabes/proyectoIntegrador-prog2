@@ -20,7 +20,7 @@ CREATE TABLE tabla_productos (
   imagen VARCHAR(300) NOT NULL,
   nombre_producto VARCHAR(250) NOT NULL,
   descripcion_producto VARCHAR(1000) NOT NULL, 
-  fecha_carga DATETIME NOT NULL,
+  fecha_carga DATETIME,
   FOREIGN KEY (usuario_id) REFERENCES tabla_de_usuarios(id),
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

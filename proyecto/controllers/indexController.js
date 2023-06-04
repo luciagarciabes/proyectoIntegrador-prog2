@@ -9,7 +9,7 @@ const indexControlador = {
         order: [['createdAt', 'DESC']]}
         )
         .then((data) => {
-          console.log(data)
+          //console.log(data)
           res.render("index", {productos: data})
         })
         .catch((error)=>{
@@ -36,14 +36,28 @@ const indexControlador = {
           })
 
           .then(data => {
+                 // no nos sale lo de buscar en la base de datos
+                  // 2 ponerlos en session (condicional que vea si el usuario esta en la base, si el usuario esta en la base, definir el session con los datos
+                 
+                 
+                 
+                  // req.session.usuarioLogueado= data.dataValues
 
+                  //req.session.usuarioLogueado = {
+                  //usuario: data.dataValues.usuario,
+                  //email: data.dataValues.email,
+                  //contraseña: data.dataValues.contraseña}               
+                
+            
           })
+
+            req.session.usuarioLogueado = {
+            usuario: req.body.usuario,
+            contraseña: req.body.contraseña}     
+           
+           
           
-      // 2 ponerlos en session (condicional que vea si el usuario esta en la base, si el usuario esta en la base, definir el session con los datos)
-          req.session.usuarioLogueado = {
-          usuario: req.body.usuario,
-          contraseña: req.body.contraseña
-        }
+      
 
      // 3 preguntar si el usuario tildó el checkbox de recordarme. If checkeado, creo una cookie 
      if (req.body.recordarme != undefined){
