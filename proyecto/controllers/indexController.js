@@ -17,11 +17,53 @@ const indexControlador = {
         })
       },
 
-
-
     login:  function(req,res){
-        return res.render("login")
+        // si el usuario esta logueado, redigirlo a home 
+          if(req.session.usuario != undefined) {
+            return res.redirect("/")
+          } else {
+            return res.render("login")
+          }
+        
       },
+
+    processLogin: function(req, res) {
+      //1 buscar los datos de la db
+         // req.body para traer el dato del form y de ahi buscarlo en la db para traer el usuario 
+          db.Usuario.findOne({
+            where: [
+                    {usuario: req.body.usuario} ]
+          })
+
+          .then(data => {
+
+          })
+          
+      // 2 ponerlos en session (condicional que vea si el usuario esta en la base, si el usuario esta en la base, definir el session con los datos)
+          req.session.usuarioLogueado = {
+          usuario: req.body.usuario,
+          contraseña: req.body.contraseña
+        }
+
+     // 3 preguntar si el usuario tildó el checkbox de recordarme. If checkeado, creo una cookie 
+     if (req.body.recordarme != undefined){
+      res.cookie("cookieUsuario", [req.session.usuarioLogueado.usuario, req.session.usuarioLogueado.contraseña], {maxAges: 1000*60 * 23484444924} )
+
+     }
+        return  res.redirect("/")
+
+
+     
+    },
+    logout: function(req, res) {
+      //Destruyo la sesión
+      req.session.destroy()   
+      //Destruyo la cookie
+          res.clearCookie("cookieUsuario")
+      return res.redirect("/")
+    },
+
+
     register: function(req,res) {
       return res.render("register")
     },
