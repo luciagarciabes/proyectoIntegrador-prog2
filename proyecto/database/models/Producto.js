@@ -38,6 +38,7 @@ module.exports= function(sequelize, dataTypes) {
     let config= {
         tableName: 'tabla_productos', 
         timestamps: true, 
+        underscore: true
         
     }
     let Producto= sequelize.define(alias, cols, config)

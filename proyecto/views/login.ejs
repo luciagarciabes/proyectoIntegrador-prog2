@@ -22,12 +22,12 @@
 				<input  class="input" type="text" id="usuario" name="usuario"><br>
 			  
 				<label class="label" for="Contrasena">Contraseña:</label>
-				<input class="input"  type="password" id="contraseña" name="contraseña"><br>
+				<input class="input"  type="password" id="contraseña" name="contrasenia"><br>
 
 				<label class="label"  for="Recordarme">Recordarme: </label>
 				<input class="input" type="checkbox" id="recordarme" name="recordarme">
 				
-				<% if (mensaje != "") { %>
+				<% if (mensaje) { %>
 					<h2> <%= mensaje %></h2>
 				  <% } %>
 

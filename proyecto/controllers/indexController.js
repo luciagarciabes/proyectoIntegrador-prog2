@@ -23,40 +23,54 @@ const indexControlador = {
           if(req.session.usuario != undefined) {
             return res.redirect("/")
           } else {
-            let mensaje = " "
-            return res.render("login", {mensaje: mensaje})
+            return res.render("login", {mensaje: ""})
           }
         
       },
 
     processLogin: function(req, res) {
-      //1 buscar los datos de la db
-         // req.body para traer el dato del form y de ahi buscarlo en la db para traer el usuario 
+
+         //1  traigo el dato del form y lo busco en la db para traer el usuario 
          console.log(req.body);
           db.Usuario.findOne({
             where: [{usuario: req.body.usuario} ]
           })
 
           .then(data => {
+            
                   // 2 ponerlos en session (condicional que vea si el usuario esta en la base, si el usuario esta en la base, definir el session con los datos
                  if (data != null) {
-                    //creo la session
-                    req.session.usuarioLogueado= data.dataValues
-
-                    // 3 preguntar si el usuario tildó el checkbox de recordarme. If checkeado, creo una cookie  
-                    if (req.body.recordarme != undefined){
-                      res.cookie("cookieUsuario", req.session.usuarioLogueado.id , {maxAges: 1000*60 * 23484444924} )
-                    }
-                    res.redirect("/users/profile/id/"+ data.dataValues.id) 
-                  
-                 }
-                  else {
+                  // res.send(data)
+                        //validar la contraseña
+                        let check= bcrypt.compare(req.body.contrasenia, data.dataValues.contraseña)
+                        console.log(check);
+                        if (check == true ) {
+                              //creo la session
+                              req.session.usuarioLogueado= data.dataValues
+                              // 3 preguntar si el usuario tildó el checkbox de recordarme. If checkeado, creo una cookie  
+                              if (req.body.recordarme != undefined){
+                              res.cookie("cookieUsuario", req.session.usuarioLogueado.id , {maxAges: 1000*60 * 23484444924} )
+                              // redirigimos al perfil
+                              res.redirect("/users/profile/id/"+ data.dataValues.id) 
+                              }
+                              res.redirect("/users/profile/id/"+ data.dataValues.id) 
+                          
+                        }else {
+                          //si no es correcta la contraseña
+                          return res.render("login", {mensaje: "Contraseña Incorrecta"})
+                        }
+                    
+                 } else {
                   req.session.usuarioLogueado= undefined
                   let mensaje= "Usuario o contraseña incorrectos"
                   console.log(mensaje);
                   res.render("login",{mensaje: mensaje} )
                  }
-          })
+
+          }).catch((error) => {
+            res.send(error)
+          }
+          )
      
     },
     logout: function(req, res) {
@@ -72,13 +86,15 @@ const indexControlador = {
     },
 
     createUsuario: function(req,res) {
+      //traigo los datos del formulario
       let emailForm = req.body.email
       let contraseñaForm = req.body.contraseña
+      // encripto la contraseña y la comparo
       let contraseñaEncriptada = bcrypt.hashSync(contraseñaForm, 10);
-
       let check = bcrypt.compareSync(contraseñaForm, contraseñaEncriptada);
       console.log(check); // true
 
+      //validaciones
       if (emailForm == ""){
         return res.render("register", {error: "Ingrese un mail"})
       } else if (contraseñaForm.length < 4) {
@@ -101,7 +117,7 @@ const indexControlador = {
             documento: req.body.nro_documento,
             foto_perfil: req.body.foto_perfil
           })
-          return res.render('login')
+          return res.redirect('/login')
         }
       }).catch((error) => {
         res.send(error)
