@@ -29,7 +29,7 @@ const indexControlador = {
       },
 
     processLogin: function(req, res) {
-
+      let contrasenia = req.body.contrasenia
          //1  traigo el dato del form y lo busco en la db para traer el usuario 
          console.log(req.body);
           db.Usuario.findOne({
@@ -42,7 +42,7 @@ const indexControlador = {
                  if (data != null) {
                   // res.send(data)
                         //validar la contraseña
-                        let check= bcrypt.compare(req.body.contrasenia, data.dataValues.contraseña)
+                        let check= bcrypt.compare(contrasenia, data.contraseña)
                         console.log(check);
                         if (check == true ) {
                               //creo la session
