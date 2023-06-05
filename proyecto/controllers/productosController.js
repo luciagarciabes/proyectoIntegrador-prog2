@@ -10,7 +10,7 @@ const productosControlador= {
         //relaciones
 
         Producto.findByPk(id, {include: [
-                                            {association: 'productoComentarios'},
+                                            {association: 'productoComentarios', include: [{association: "comentarioUsuarios"}]},
                                             {association: 'productoUsuarios'}
                                             
                                            ]})
@@ -52,12 +52,13 @@ const productosControlador= {
     },
     crearProducto: function(req, res){
         db.Producto.create ({
-            usuario_id: session.usuarioLoguado.id,
+            usuario_id: req.session.usuarioLogueado.id,
             imagen: req.body.imagen,
             nombre_producto: req.body.nombreProducto,
             descripcion_producto: req.body.descripcion
         }
         )
+        return res.send()
     }
 }
 

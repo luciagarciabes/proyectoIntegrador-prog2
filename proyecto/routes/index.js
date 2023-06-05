@@ -16,10 +16,11 @@ router.post("/", indexControlador.processLogin)
 router.post("/logout", indexControlador.logout)
 
 //ruta de registración
+router.post('/register', indexControlador.createUsuario)
+
 router.get('/register', indexControlador.register)
 
-// ruta de crear usuario
-router.post('/register', indexControlador.create)
+
 
 
 

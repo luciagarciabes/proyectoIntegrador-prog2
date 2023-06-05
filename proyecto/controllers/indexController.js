@@ -1,5 +1,6 @@
 const datos= require("../data/datos");
 const db = require('../database/models');
+const bcrypt = require('bcryptjs');
 
 const indexControlador = {
     index: function(req, res, next) {
@@ -22,7 +23,8 @@ const indexControlador = {
           if(req.session.usuario != undefined) {
             return res.redirect("/")
           } else {
-            return res.render("login")
+            let mensaje = " "
+            return res.render("login", {mensaje: mensaje})
           }
         
       },
@@ -30,43 +32,31 @@ const indexControlador = {
     processLogin: function(req, res) {
       //1 buscar los datos de la db
          // req.body para traer el dato del form y de ahi buscarlo en la db para traer el usuario 
+         console.log(req.body);
           db.Usuario.findOne({
-            where: [
-                    {usuario: req.body.usuario} ]
+            where: [{usuario: req.body.usuario} ]
           })
 
           .then(data => {
-                 // no nos sale lo de buscar en la base de datos
                   // 2 ponerlos en session (condicional que vea si el usuario esta en la base, si el usuario esta en la base, definir el session con los datos
-                 
-                 
-                 
-                  // req.session.usuarioLogueado= data.dataValues
+                 if (data != null) {
+                    //creo la session
+                    req.session.usuarioLogueado= data.dataValues
 
-                  //req.session.usuarioLogueado = {
-                  //usuario: data.dataValues.usuario,
-                  //email: data.dataValues.email,
-                  //contraseña: data.dataValues.contraseña}               
-                
-            
+                    // 3 preguntar si el usuario tildó el checkbox de recordarme. If checkeado, creo una cookie  
+                    if (req.body.recordarme != undefined){
+                      res.cookie("cookieUsuario", req.session.usuarioLogueado.id , {maxAges: 1000*60 * 23484444924} )
+                    }
+                    res.redirect("/users/profile/id/"+ data.dataValues.id) 
+                  
+                 }
+                  else {
+                  req.session.usuarioLogueado= undefined
+                  let mensaje= "Usuario o contraseña incorrectos"
+                  console.log(mensaje);
+                  res.render("login",{mensaje: mensaje} )
+                 }
           })
-
-            req.session.usuarioLogueado = {
-            usuario: req.body.usuario,
-            contraseña: req.body.contraseña}     
-           
-           
-          
-      
-
-     // 3 preguntar si el usuario tildó el checkbox de recordarme. If checkeado, creo una cookie 
-     if (req.body.recordarme != undefined){
-      res.cookie("cookieUsuario", [req.session.usuarioLogueado.usuario, req.session.usuarioLogueado.contraseña], {maxAges: 1000*60 * 23484444924} )
-
-     }
-        return  res.redirect("/")
-
-
      
     },
     logout: function(req, res) {
@@ -77,45 +67,46 @@ const indexControlador = {
       return res.redirect("/")
     },
 
-
-    register: function(req,res) {
-      return res.render("register")
+    register: function (req, res) {
+      res.render('register')
     },
 
-    create: function(req,res){
-      let errors = {}
-      //Validacion mail
-      if (req.body.email == "") {
-        errors.message = "Email no puede estar vacio.";
-        res.locals.errors = errors;
-        return res.render("register")
+    createUsuario: function(req,res) {
+      let emailForm = req.body.email
+      let contraseñaForm = req.body.contraseña
+      let contraseñaEncriptada = bcrypt.hashSync(contraseñaForm, 10);
 
-      } else if (req.bodyemail ) {     // falta el condicional 
-        errors.message = "El email ingresado ya existe";
-        res.locals.errors = errors;
-        return res.render("register")
-      }
+      let check = bcrypt.compareSync(contraseñaForm, contraseñaEncriptada);
+      console.log(check); // true
 
-      // validacion contrasena
-      if (req.body.contraseña == ""){
-        errors.message = "Contraseña no puede estar vacia.";
-        res.locals.errors = errors;
-        return res.render("register")
-
-      } else if (req.body.contraseña.length < 3){  // chequear si esta OK el 'length'
-        errors.message = "La contraseña debe tener mas de tres caracteres.";
-        res.locals.errors = errors;
-        return res.render("register")
-      } 
-      let passEncriptada = bcrypt.js.hashSync(req.body.contraseña, 12)
-      let usuario = {
-        email: req.body.email,
-        contraseña: passEncriptada
-      }
-      User.create(usuario);
-      res.redirect('/')  // chequear a donde tiene que redireccionar   
-      }
-     
+      if (emailForm == ""){
+        return res.render("register", {error: "Ingrese un mail"})
+      } else if (contraseñaForm.length < 4) {
+        return res.render("register", {error: "La contraseña debe tener al menos 4 caracteres"})
+      } else {
+        // busco en la base de datos si ya existe el usuario
+        db.Usuario.findOne({
+          where: [{email: emailForm}]
+        })
+        .then((data) => {
+          if (data != undefined) {
+            return res.render("register", {error: "El mail ya existe"})
+        } else {
+          // Creo el usuario
+          db.Usuario.create({
+            email: emailForm,
+            contraseña: contraseñaEncriptada,
+            usuario: req.body.usuario,
+            fecha_nacimiento: req.body.fecha_nacimiento,
+            documento: req.body.nro_documento,
+            foto_perfil: req.body.foto_perfil
+          })
+          return res.render('login')
+        }
+      }).catch((error) => {
+        res.send(error)
+      } )
+    }}     
 }
 
 

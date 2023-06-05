@@ -26,10 +26,19 @@
 
 				<label class="label"  for="Recordarme">Recordarme: </label>
 				<input class="input" type="checkbox" id="recordarme" name="recordarme">
+				
+				<% if (mensaje != "") { %>
+					<h2> <%= mensaje %></h2>
+				  <% } %>
 
 	
 				<input class="submit" type="submit" value="Enviar">
+				
 			  </form>
+			
+			 
+				
+				
 
 
 

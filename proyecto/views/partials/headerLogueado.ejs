@@ -31,7 +31,7 @@
 				</div>
 	
 				<div class="col-7 col-md-6">
-					<form action="/" method="GET" class="search-form">
+					<form action="/productos/searchResult" method="GET" class="search-form">
 						<input type="text" name="search" placeholder="Buscar tortas, gustos y más" class="search-form_input">
 						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
 					</form>
@@ -56,7 +56,7 @@
 				</ul>
 	
 				<ul class="right-navbar">
-					<li><a href="/profile/id/:<%= locals.usuarioLogueado.id %>"> <!-- CAMBIAR RUTA-->   
+					<li><a href="/users/profile/id/<%= locals.usuarioLogueado.id %>"> <!-- CAMBIAR RUTA-->   
 							Bienvenido <%= locals.usuarioLogueado.usuario %> <i class="fas fa-user"></i>
 						</a>
 					</li>
