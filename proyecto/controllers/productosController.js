@@ -55,10 +55,11 @@ const productosControlador= {
             usuario_id: req.session.usuarioLogueado.id,
             imagen: req.body.imagen,
             nombre_producto: req.body.nombreProducto,
-            descripcion_producto: req.body.descripcion
+            descripcion_producto: req.body.descripcion,
+            fecha_carga: req.body.fecha
         }
         )
-        return res.send()
+        return res.redirect('/')
     }
 }
 

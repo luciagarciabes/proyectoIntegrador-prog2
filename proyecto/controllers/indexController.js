@@ -29,7 +29,7 @@ const indexControlador = {
       },
 
     processLogin: function(req, res) {
-      let contrasenia = req.body.contrasenia
+      
          //1  traigo el dato del form y lo busco en la db para traer el usuario 
          console.log(req.body);
           db.Usuario.findOne({
@@ -42,18 +42,18 @@ const indexControlador = {
                  if (data != null) {
                   // res.send(data)
                         //validar la contraseña
-                        let check= bcrypt.compare(contrasenia, data.contraseña)
+                        let check= bcrypt.compare(req.body.contrasenia, data.contraseña)
                         console.log(check);
-                        if (check == true ) {
+                        if (check) {
                               //creo la session
-                              req.session.usuarioLogueado= data.dataValues
+                              req.session.usuarioLogueado= data
                               // 3 preguntar si el usuario tildó el checkbox de recordarme. If checkeado, creo una cookie  
                               if (req.body.recordarme != undefined){
                               res.cookie("cookieUsuario", req.session.usuarioLogueado.id , {maxAges: 1000*60 * 23484444924} )
                               // redirigimos al perfil
-                              res.redirect("/users/profile/id/"+ data.dataValues.id) 
+                              res.redirect("/users/profile/id/"+ data.id) 
                               }
-                              res.redirect("/users/profile/id/"+ data.dataValues.id) 
+                              res.redirect("/users/profile/id/"+ data.id) 
                           
                         }else {
                           //si no es correcta la contraseña
@@ -62,7 +62,7 @@ const indexControlador = {
                     
                  } else {
                   req.session.usuarioLogueado= undefined
-                  let mensaje= "Usuario o contraseña incorrectos"
+                  let mensaje= "Usuario no registrado"
                   console.log(mensaje);
                   res.render("login",{mensaje: mensaje} )
                  }
