@@ -82,7 +82,8 @@ const indexControlador = {
     },
 
     register: function (req, res) {
-      res.render('register')
+      let error= ""
+      res.render('register', {error: error})
     },
 
     createUsuario: function(req,res) {

@@ -35,11 +35,15 @@
 			  
 				<label class="label"  for="Foto de perfil">Foto de Perfil:</label>
 				<input  class="input" type="text" id="foto_perfil" name="foto_perfil"><br>
+				
+				<% if (error != "") { %>
+					<h2> <%= error %></h2>
+				  <% } %>
 			  
 				<input class="submit" type="submit" value="Enviar">
 			  </form>
 
-
+			 
 
 	<!-- footer -->
 	<%- include('./partials/footer.ejs') %>
