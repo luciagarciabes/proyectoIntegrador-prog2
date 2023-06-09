@@ -31,9 +31,9 @@ const indexControlador = {
     processLogin: function(req, res) {
       
          //1  traigo el dato del form y lo busco en la db para traer el usuario 
-         console.log(req.body);
+       
           db.Usuario.findOne({
-            where: [{usuario: req.body.usuario} ]
+            where: [{email: req.body.email} ]
           })
 
           .then(data => {
@@ -42,14 +42,14 @@ const indexControlador = {
                  if (data != null) {
                   // res.send(data)
                         //validar la contraseña
-                        let check= bcrypt.compare(req.body.contrasenia, data.contraseña)
+                        let check= bcrypt.compareSync(req.body.contrasenia, data.contrasennia)
                         console.log(check);
                         if (check) {
                               //creo la session
                               req.session.usuarioLogueado= data
                               // 3 preguntar si el usuario tildó el checkbox de recordarme. If checkeado, creo una cookie  
                               if (req.body.recordarme != undefined){
-                              res.cookie("cookieUsuario", req.session.usuarioLogueado.id , {maxAges: 1000*60 * 23484444924} )
+                              res.cookie("cookieUsuario", req.session.usuarioLogueado.id , {maxAges: 1000*60 * 15} )
                               // redirigimos al perfil
                               res.redirect("/users/profile/id/"+ data.id) 
                               }

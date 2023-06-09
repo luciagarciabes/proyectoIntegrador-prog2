@@ -5,7 +5,7 @@ CREATE TABLE tabla_de_usuarios (
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	email VARCHAR(200) UNIQUE NOT NULL,
   usuario VARCHAR(200) UNIQUE NOT NULL,
-  contraseña VARCHAR(250) NOT NULL,
+  contrasennia VARCHAR(250) NOT NULL,
   fecha_nacimiento DATE NOT NULL,
   documento INT NOT NULL,
   foto_perfil VARCHAR(300) NOT NULL,

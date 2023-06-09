@@ -19,6 +19,9 @@ router.get('/agregarProducto', productosControlador.agregarProducto )
 
 router.post("/agregarProducto", productosControlador.crearProducto)
 
+// ruta por post de crear comentario
+router.post("/detalleProducto/:id", productosControlador.crearComentario)
+
 
 
 module.exports = router;

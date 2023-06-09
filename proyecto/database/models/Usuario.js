@@ -14,7 +14,7 @@ module.exports= function(sequelize, dataTypes) {
             type: dataTypes.STRING,
             unique: true
         },
-        contraseña: {
+        contrasennia: {
             type: dataTypes.STRING
         },
         fecha_nacimiento: {

@@ -17,24 +17,24 @@
 			<!-- Show the "ultimos" products -->
 
 			<% if (productos.length !=0) { %>
-
-				<div class="col-12 col-sm-6 col-lg-3">
-					<% for( let i = 0; i < productos.length; i++ ) { %>
+				<% for(let i = 0; i < productos.length; i++ ) { %>
+					<div class="col-12 col-sm-6 col-lg-3">
 						<section class="product-box">
-							<a href="/productos/detalleProducto"> 
+							<a href="/productos/detalleProducto/<%= productos[i].id %>">
 								<figure class="product-box_image">
-									<img class="foto-producto" src= <%=productos[i].imagen%> alt=<%= productos[i].nombre_producto %>>
+									<img class="foto-producto" src="<%=productos[i].imagen%>" alt="cafetera moulinex">
 								</figure>
 								<article class="product-box_data">
 									<h2><%=productos[i].nombre_producto%></h2>
-									<p><%= productos[i].descripcion_producto %></p></a>
+									<p><%=productos[i].descripcion_producto%></p>
 									<a href="/users/profile/id/<%=productos[i].productoUsuarios.id %>"><p>Usuario: <%= productos[i].productoUsuarios.usuario %></p></a>
-									
+	
 								</article>
-							
+							</a>
 						</section>
-					<% } %>
 					</div>
+				<% } %>
+				
 				 <% } else { %>
 
 					<h2 class="products-title"> No hay resultados para tu búsqueda </h2>

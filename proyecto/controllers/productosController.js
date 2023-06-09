@@ -57,9 +57,27 @@ const productosControlador= {
             nombre_producto: req.body.nombreProducto,
             descripcion_producto: req.body.descripcion,
             fecha_carga: req.body.fecha
-        }
-        )
-        return res.redirect('/')
+        })
+        .then((data)=> {
+            return res.redirect('/')
+        })
+        .catch((error)=>{
+            res.send(error)
+        })
+        
+    },
+    crearComentario: function(req,res){
+        db.Comentario.create({
+            usuario_id: req.session.usuarioLogueado.id,
+            post_id: req.params.id,
+            comentario: req.body.comentario
+        })
+        .then((data)=> {
+            return res.redirect('/')
+        })
+        .catch((error)=>{
+            res.send(error)
+        })
     }
 }
 

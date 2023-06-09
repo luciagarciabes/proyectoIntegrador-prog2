@@ -9,6 +9,9 @@ router.get("/profile/id/:id", usersControlador.profile)
 //ruta de editar perfil
 router.get("/editarPerfil", usersControlador.editarPerfil)
 
+//ruta edita perfil
+router.post("/editarPerfil", usersControlador.editarPerfilPost)
+
 
 
 module.exports = router;

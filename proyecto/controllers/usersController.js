@@ -3,24 +3,35 @@ let db= require("../database/models")
 
 const usersControlador= {
    profile: function(req, res){
-    let rel= {include:[{association: "usuarioProductos"}]}
-
     let id= req.params.id
-    db.Usuario.findByPk(id, rel, {raw:true, nest:true}, {
-      order: [
-        'createdAt', 'DESC' ]}
-        )
-    .then((data) => {
-      console.log(data);
-      return res.render("profile", {usuario: data})
+
+    let criterio = {
+      include: [{association: "productoUsuarios"}],
+      where: [{
+        usuario_id: id
+      }],
+      order: [["createdAt", "DESC"]]
+    };
+
+    db.Producto.findAll(criterio)
+    .then(function(result) {
+      let losProductos = result;
+      let elUsuario = result[0].productoUsuarios;
       
-    }) 
+      return res.render("profile", {productos: losProductos, usuario: elUsuario})
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
 
 
     
   },
   editarPerfil: function(req,res){
     return res.render("profile-edit", {usuario: datos.usuario})
+  },
+  editarPerfilPost: function(req,res) {
+
   }
 
 }

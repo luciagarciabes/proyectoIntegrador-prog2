@@ -32,7 +32,7 @@
 							<% } else {%>
 								<% for( let i = 0; i < producto.productoComentarios.length; i++ ) { %>
 									<article>
-										<img src="https://via.placeholder.com/35" alt="">
+										<img  id="imgcomentario" src="<%= producto.productoComentarios[i].comentarioUsuarios.foto_perfil%>" alt="">
 										<div class="data">
 											<p class="user">
 											<strong> <a href="/users/profile/id/<%= producto.productoComentarios[i].usuario_id %>"> <%= producto.productoComentarios[i].comentarioUsuarios.usuario %>: </a> </strong> 
@@ -50,13 +50,14 @@
 					
 
 					<% if (locals.usuarioLogueado != undefined) { %>
-						<form class="form" action="/login" method="POST">
-							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+						<form class="form" action="/productos/detalleProducto/<%= producto.id %>" method="POST">
+							<input class="form-input" type="text" value="" name="comentario" placeholder="Agregar comentario">
 							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 						</form>
+						
 					 
 					<% } else { %>
-						<form class="form" action="/login" method="GET">
+						<form class="form" action="/login" method="get">
 							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 						</form>
