@@ -29,6 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //SESSION
+app.use(cookieParser())
 app.use(session( { secret: "Clamalú tortas",
 				           resave: false,
 			            	saveUninitialized: true }));
@@ -45,22 +46,14 @@ app.use(function(req, res, next) {
 
 
 // COOKIE
-/*  app.use((req, res, next)=> {
-  if(req.cookies.cookieUsuario != undefined) {
-      let id= req.cookies.cookieUsuario
-      db.Usuario.findByPk(id)
-      .then((data)=> {
-        if(data != undefined) {
-          req.session.usuarioLogueado= data
-        }
-        return next()
-      })
-      .catch((error)=> {
-        console.log(error)
-      })}
-      return next()
+app.use(function(req, res, next){
+  if(req.cookies.cookieUsuario != undefined){
+    res.locals.usuarioLogueado= req.cookies.cookieUsuario
+  }
+  return next()
+})
 
-}) */
+ 
 
 
 

@@ -45,10 +45,9 @@ const indexControlador = {
                               req.session.usuarioLogueado= data
                               // 3 preguntar si el usuario tildó el checkbox de recordarme. If checkeado, creo una cookie  
                               if (req.body.recordarme != undefined){
-                              res.cookie("cookieUsuario", req.session.usuarioLogueado.id , {maxAges: 1000*60 * 15} )
-                              // redirigimos al perfil
-                              res.redirect("/users/profile/id/"+ data.id) 
+                              res.cookie("cookieUsuario", req.session.usuarioLogueado , {maxAges: 1000*60 * 15} )
                               }
+                                // redirigimos al perfil
                               res.redirect("/users/profile/id/"+ data.id) 
                           
                         }else {
