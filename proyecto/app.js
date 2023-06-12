@@ -42,23 +42,25 @@ app.use(function(req, res, next) {
   return next()   //el next le dice continua con lo que sigue para que la ejecuci´øn no corte ahí ni siga cargando.          
 })
 
+
+
 // COOKIE
-/*app.use((req, res, next)=> {
+/*  app.use((req, res, next)=> {
   if(req.cookies.cookieUsuario != undefined) {
       let id= req.cookies.cookieUsuario
       db.Usuario.findByPk(id)
       .then((data)=> {
         if(data != undefined) {
           req.session.usuarioLogueado= data
-        }else {
-          req.session.usuarioLogueado= undefined
         }
+        return next()
       })
       .catch((error)=> {
         console.log(error)
       })}
+      return next()
 
-})*/
+}) */
 
 
 
