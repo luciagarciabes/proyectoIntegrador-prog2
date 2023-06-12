@@ -47,7 +47,8 @@ module.exports= function(sequelize, dataTypes) {
     // Muchos comentarios pertenecen a un usuario
         Comentario.belongsTo(models.Usuario, {
             as: "comentarioUsuarios",
-            foreignKey: "usuario_id"
+            foreignKey: "usuario_id",
+            onDelete: "cascade"
         })
     }
     return Comentario

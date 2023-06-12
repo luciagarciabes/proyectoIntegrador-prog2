@@ -38,10 +38,12 @@ app.use(function(req, res, next) {
     res.locals.usuarioLogueado= req.session.usuarioLogueado
     return next()
   }
-  return next()   //el next le dice continua con lo que sigue para que la ejecuci´øn no corte ahí ni siga cargando.
-  
-           
+  return next()   //el next le dice continua con lo que sigue para que la ejecuci´øn no corte ahí ni siga cargando.          
 })
+
+// COOKIE
+
+
 
 
 //RUTAS

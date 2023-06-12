@@ -21,9 +21,13 @@
 							<i class="fas fa-cog"></i>
 						</a>
 					</h1>
+
 					<% if (locals.usuarioLogueado != undefined) { %>
-						<a class="btn mt-3 ml-4" href="/users/editarPerfil" >EDITAR</a>
-					<% } else { %>
+						<% if (locals.usuarioLogueado.id == usuario.id) { %>  <!-- if es mi perfil.. -->
+							<a class="btn mt-3 ml-4" href="/users/editarPerfil/<%= usuario.id %>" >EDITAR</a>
+						<% } else { %>
+							
+						<% } %>
 						
 					<% } %>
 				
@@ -31,7 +35,7 @@
 				<div>
 					<ul class="">
 						<li> Email: <%= usuario.email %></li>
-						<li><%= productos.length %> productos</li>
+						<li><%= usuario.usuarioProductos.length %> productos</li>
 						<li>200 seguidores</li>
 						<li>300 comentarios</li>
 					</ul>
@@ -48,17 +52,17 @@
 				<h2 class="products-title">Productos</h2>
 			</div>
 			<!-- Show mis productos -->
-			<% if (productos.length !=0 ) { %>
-				<% for( let i = 0; i < productos.length; i++ ) { %>
+			<% if (usuario.usuarioProductos.length !=0 ) { %>
+				<% for( let i = 0; i < usuario.usuarioProductos.length; i++ ) { %>
 					<div class="col-12 col-sm-6 col-lg-3">
 						<section class="product-box">
-							<a href="/productos/detalleProducto/<%= productos[i].id %>"><!-- href cambiar-->
+							<a href="/productos/detalleProducto/<%= usuario.usuarioProductos[i].id %>"><!-- href cambiar-->
 								<figure class="product-box_image">
-									<img  class="foto-producto" src=<%= productos[i].imagen %> alt=<%= productos[i].nombre_producto%>>
+									<img  class="foto-producto" src=<%= usuario.usuarioProductos[i].imagen %> alt=<%= usuario.usuarioProductos[i].nombre_producto%>>
 								</figure>
 								<article class="product-box_data">
-									<h2><%= productos[i].nombre_producto %></h2>
-									<p><%= productos[i].descripcion_producto %></p>
+									<h2><%= usuario.usuarioProductos[i].nombre_producto %></h2>
+									<p><%= usuario.usuarioProductos[i].descripcion_producto %></p>
 									
 								</article>
 							</a>

@@ -1,5 +1,6 @@
 const db= require("../database/models")
-const datos= require("../data/datos")
+const datos= require("../data/datos");
+const Comentario = require("../database/models/Comentario");
 const Producto= db.Producto
 const op= db.Sequelize.Op;
 
@@ -11,9 +12,9 @@ const productosControlador= {
 
         Producto.findByPk(id, {include: [
                                             {association: 'productoComentarios', include: [{association: "comentarioUsuarios"}]},
-                                            {association: 'productoUsuarios'}
-                                            
-                                           ]})
+                                            {association: 'productoUsuarios'}],
+                                            order: [[{model: db.Comentario, as: "productoComentarios"}, "createdAt", "DESC"]]
+                                        })
 
             .then((data)=> {
                 console.log(id);
@@ -78,7 +79,47 @@ const productosControlador= {
         .catch((error)=>{
             res.send(error)
         })
+    },
+    editarProducto: function (req, res) {
+        db.Producto.update({
+            imagen: req.body.imagen,
+            nombre_producto: req.body.nombreProducto,
+            descripcion_producto: req.body.descripcion,
+            fecha_carga: req.body.fecha
+        }, {where: {id: req.params.id}}
+        
+        )  
+        .then((data)=> {
+            return res.redirect('/')
+        })
+        .catch((error) => {
+            res.send(error)
+        })
+    },
+    editarProductoGet: function(req, res){
+        let id= req.params.id
+        Producto.findByPk(id)
+
+            .then((data)=> {
+            //res.send(data)
+            return res.render("product-edit", {producto:data}) //le paso otros datos
+
+            }). catch((error)=> {
+            res.send(error)
+            })
+                  
+    },
+    eliminarProducto: function(req,res) {
+        let id= req.params.id
+        Producto.destroy({where: {id: id}})
+        .then((data) => {
+            return res.redirect('/')
+        })
+        .catch((error)=> {
+            res.send(error)
+        })
     }
+
 }
 
 

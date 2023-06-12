@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<% if (locals.usuarioLogueado != undefined) { %>
+	<%- include("./partials/headerLogueado.ejs") %>
+<% } else { %>
+	<%- include('./partials/headerNoLogueado.ejs') %>
+<% } %>
+	<!-- /Header -->
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Editar producto</h2>
+			
+			</div>
+			<!-- Show the "ultimos" products -->
+			
+
+			<form class="formRegister" action="/productos/editarProducto/<%= producto.id %>"  method="POST">
+				<label class="label" for="Imagen">Imagen:</label>
+				<input class="input" type="text" id="imagen" name="imagen" value="<%= producto.imagen %>"><br>
+			  
+				<label class="label"  for="Nombre del producto"> Nombre del producto:</label>
+				<input  class="input" type="text" id="nombreProducto" name="nombreProducto" value="<%= producto.nombre_producto %>"><br>
+			  
+				<label class="label"  for="Descripción">Descripción:</label>
+				<input class="input"  type="text" id="descripcion" name="descripcion" value="<%= producto.descripcion_producto %>"><br>
+
+				<label class="label"  for="Fecha de carga">Fecha de edición:</label>
+				<input  class="input" type="text" id="fecha" name="fecha" value="<%= producto.fecha_carga %>"><br>
+			  
+				<input class="submit" type="submit" value="Actualizar">
+			  </form>
+
+
+	<!-- footer -->
+	<%- include('./partials/footer.ejs') %>
+	<!-- /footer -->
+</body>
+
+</html>

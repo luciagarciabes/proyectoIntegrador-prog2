@@ -16,21 +16,23 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			
-			<form class="formRegister" action="/users/profile/id/<%=locals.usuarioLogueado.id  %>" method="POST">
+			<form class="formRegister" action="/users/editarPerfil/<%= usuario.id %>" method="POST">
 				<label class="label" for="usuario"> Usuario:</label>
-				<input  class="input" type="text" id="usuario" name="usuario" value=""  ><br>
+				<input  class="input" type="text" id="usuario" name="usuario" value="<%= usuario.usuario %>"  ><br>
 			  
 				<label class="label"  for="Contraena">Contraseña:</label>
-				<input class="input"  type="password" id="contraseña" name="contraseña" value=""><br>
+				<input class="input"  type="password" id="contraseña" name="contrasennia" value=""><br>
 			  
 				<label class="label"  for="Fecha de nacimiento">Fecha de Nacimiento:</label>
-				<input  class="input" type="date" id="fecha_nacimiento" name="fecha_nacimiento" value= ""><br>
+				<input  class="input" type="date" id="fecha_nacimiento" name="fecha_nacimiento" value= "<%= usuario.fecha_nacimiento %>"><br>
 			  
 				<label class="label"  for="Nro de documento">Nro de Documento:</label>
-				<input  class="input" type="text" id="nro_documento" name="nro_documento" value="" ><br>
+				<input  class="input" type="text" id="nro_documento" name="nro_documento" value="<%= usuario.documento%>" ><br>
 			  
 				<label class="label"  for="Foto de perfil">Foto de Perfil:</label>
-				<input  class="input" type="text" id="foto_perfil" name="foto_perfil"  value=""><br>
+				<input  class="input" type="text" id="foto_perfil" name="foto_perfil"  value="<%= usuario.foto_perfil %>"><br>
+
+				<h2> <%= error %></h2>
 			  
 				<input class="submit" type="submit" value="Actualizar información">
 			  </form>

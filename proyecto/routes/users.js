@@ -7,10 +7,10 @@ const usersControlador= require("../controllers/usersController")
 router.get("/profile/id/:id", usersControlador.profile)
 
 //ruta de editar perfil
-router.get("/editarPerfil", usersControlador.editarPerfil)
+router.get("/editarPerfil/:id", usersControlador.editarPerfil)
 
 //ruta edita perfil
-router.post("/editarPerfil", usersControlador.editarPerfilPost)
+router.post("/editarPerfil/:id", usersControlador.editarPerfilPost)
 
 
 

@@ -13,7 +13,24 @@
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%= producto.nombre_producto %></h2> 
 			<p class="product-detail-description">
-				<a href="/productos/agregarProducto">Editar</a> <!-- href cambiar-->
+
+				<% if (locals.usuarioLogueado != undefined) { %>
+					<% if (locals.usuarioLogueado.id == producto.usuario_id) { %>  <!-- if el producto fue creado por mi-->
+						<a href="/productos/editarProducto/<%= producto.id %>">Editar  -   </a> 
+						<a href="/productos/eliminarProducto/<%= producto.id %>">  Eliminar Producto</a> 
+						
+
+						
+					<% } else { %>
+						
+					<% } %>
+					
+				<% } %>
+
+
+			
+
+				
 			</p>
 		</div>
 		<div class="product-detail">
@@ -57,10 +74,7 @@
 						
 					 
 					<% } else { %>
-						<form class="form" action="/login" method="get">
-							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-						</form>
+						<h1> Debes estar logueado para comentar</h1>
 						<% } %>
 					
 					<hr>
