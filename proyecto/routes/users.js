@@ -12,6 +12,9 @@ router.get("/editarPerfil/:id", usersControlador.editarPerfil)
 //ruta edita perfil
 router.post("/editarPerfil/:id", usersControlador.editarPerfilPost)
 
+//ruta buscador de usuarios
+router.get("/searchResultUsuarios", usersControlador.searchResultUsuarios)
+
 
 
 module.exports = router;

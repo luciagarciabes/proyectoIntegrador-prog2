@@ -15,9 +15,10 @@ router.post("/", indexControlador.processLogin)
 // ruta de logout
 router.post("/logout", indexControlador.logout)
 
-//ruta de registración
+//ruta de registración por post
 router.post('/register', indexControlador.createUsuario)
 
+//ruta de registración por get
 router.get('/register', indexControlador.register)
 
 

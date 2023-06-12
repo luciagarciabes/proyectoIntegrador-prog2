@@ -112,7 +112,7 @@ const indexControlador = {
           // Creo el usuario
           db.Usuario.create({
             email: emailForm,
-            contraseña: contraseñaEncriptada,
+            contrasennia: contraseñaEncriptada,
             usuario: req.body.usuario,
             fecha_nacimiento: req.body.fecha_nacimiento,
             documento: req.body.nro_documento,

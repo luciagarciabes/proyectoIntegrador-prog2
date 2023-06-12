@@ -16,8 +16,11 @@
 
 				<% if (locals.usuarioLogueado != undefined) { %>
 					<% if (locals.usuarioLogueado.id == producto.usuario_id) { %>  <!-- if el producto fue creado por mi-->
-						<a href="/productos/editarProducto/<%= producto.id %>">Editar  -   </a> 
-						<a href="/productos/eliminarProducto/<%= producto.id %>">  Eliminar Producto</a> 
+						<a href="/productos/editarProducto/<%= producto.id %>">Editar Producto  -   </a> 
+						<form action="/productos/eliminarProducto/<%=producto.id %>" method="POST">
+						<input  type="submit" value="Eliminar Producto">
+						 
+						</form>
 						
 
 						
