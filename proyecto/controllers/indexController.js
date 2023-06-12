@@ -3,8 +3,7 @@ const db = require('../database/models');
 const bcrypt = require('bcryptjs');
 
 const indexControlador = {
-    index: function(req, res, next) {
-      let rel =  
+    index: function(req, res, next) { 
       db.Producto.findAll({
         include: [{association: "productoUsuarios"}],
         order: [['createdAt', 'DESC']]}
@@ -29,15 +28,12 @@ const indexControlador = {
       },
 
     processLogin: function(req, res) {
-      
          //1  traigo el dato del form y lo busco en la db para traer el usuario 
-       
           db.Usuario.findOne({
             where: [{email: req.body.email} ]
           })
 
           .then(data => {
-            
                   // 2 ponerlos en session (condicional que vea si el usuario esta en la base, si el usuario esta en la base, definir el session con los datos
                  if (data != null) {
                   // res.send(data)
